@@ -1,0 +1,696 @@
+//3.16 (Gas Mileage)
+//Drivers are concerned with the mileage obtained by their automobiles. 
+//One driver has kept track of several tankfuls of gasoline by recording miles driven and 
+//gallons used for each tankful. Develop a program that will input the miles driven and 
+//gallons used for each tankful. The program should calculate and display the miles per 
+//gallon obtained for each tankful. After processing all input information, the program 
+//should calculate and print the combined miles per gallon obtained for all tankfuls.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+int i=0;
+float gallonsNo;
+float miles;
+float sum=0,avg;
+
+while(1){
+printf("\n\nEnter the gallons used <-1 to end>: ");
+scanf("%f", &gallonsNo);
+if(gallonsNo == -1){
+    break;
+}
+printf("\nEnter the miles driven: ");
+scanf("%f", &miles);
+ sum += (float)(miles/gallonsNo);
+ printf("\nThe miles/gallon for this tank was %f\n",(float)(miles/gallonsNo));
+i++;
+}
+avg= (float)(sum/i);
+
+printf("\nThe overall average miles/gallon was %f", avg);
+    return 0;
+}
+
+3.17 (Credit Limit Calculator) 
+//Develop a C program that will determine if a department store
+//customer has exceeded the credit limit on a charge account. For each customer, the following facts
+//are available:
+//a) Account number
+//b) Balance at the beginning of the month
+//c) Total of all items charged by this customer this month
+//d) Total of all credits applied tothis customer's account this month
+//e) Allowed credit limit
+//The program should input each fact, calculate the new balance (= beginning balance +
+//charges – credits), and determine whether the new balance exceeds the customer's credit limit. For
+//those customers whose creditlimit is exceeded, the program should display the customer's account
+//number, credit limit, new balance and the message “Credit limit exceeded.”
+
+#include<stdio.h>
+
+int main(){
+int accountNo;
+float beginningBalance;
+float totalCharges;
+float totalCredits;
+float creditLimit;
+float newBalance;
+
+while(1){
+
+
+printf("\nEnter account number <-1 to end>:");
+scanf("%i", &accountNo);
+
+if(accountNo == -1)
+           break;
+
+printf("\nEnter beginning balance:");
+scanf("%f", &beginningBalance);
+
+printf("\nEnter total charges:");
+scanf("%f",&totalCharges);
+
+printf("\nEnter total credits:");
+scanf("%f", &totalCredits);
+
+printf("\nEnter credit limit:");
+scanf("%f", &creditLimit);
+
+newBalance= beginningBalance + totalCharges -totalCredits;
+if(newBalance > creditLimit){
+    printf("\nCredit Limit Exceeded!\n");
+}
+}
+return 0;
+}
+
+3.18 (Sales Commission Calculator)
+//One large chemical company pays its salespeople on a commission basis. The salespeople receive 
+//$200 per week plus 9% of their gross sales for that week. For example, a salesperson who sells 
+//$5000 worth of chemicals in a week receives $200 plus 9% of $5000, or a total of $650. Develop 
+//a program that will input each salesperson’s gross sales for last week and will calculate and 
+//display that salesperson’s earnings. Process one salesperson's figures at a time.
+
+#include<stdio.h>
+
+int main(){
+float sales;
+float salesCommission;
+
+while(1){
+printf("\nEnter the sales in dollars <-1 to end>: ");
+scanf("%f", &sales);
+if(sales == -1)
+  break;
+salesCommission= 200 + (0.09 * sales);
+printf("\nSalary is: $ %f", salesCommission);
+}
+return 0;
+}
+
+//3.19 (Interest Calculator)
+//The simple interest on a loan is calculated by the formula
+//interest = principal * rate * days / 365;
+//The preceding formula assumes that rateis the annual interest rate, and therefore includes the
+//division by 365 (days). Develop a program that will input principal, rateand daysfor several
+//loans, and will calculate and display the simple interest for each loan, using the preceding formula.
+
+#include<stdio.h>
+
+int main(){
+float loanPrincipal;
+float interestRate;
+int days;
+float interestCharge;
+
+while(1){
+    printf("\Enter loan principal <-1 to end>:");
+    scanf("%f", &loanPrincipal);
+
+    if(loanPrincipal == -1)
+        break;
+
+    printf("\nEnter interest rate:");
+    scanf("%f",&interestRate);
+
+    printf("\nEnter term of loan in days:");
+    scanf("%i", &days);
+
+    interestCharge= ((loanPrincipal * interestRate *days) /365);
+
+    printf("\nThe interest charge is $ %.2f\n", interestCharge);
+}
+
+return 0;
+}
+
+3.20 (Salary Calculator) 
+Develop a program that will determine the gross pay for each of several
+employees. The company pays “straight time” for the first 40 hours worked by each employee and
+pays “time-and-a-half” for all hours worked in excess of 40 hours. You’re given a list of the 
+employees of the company, the number of hours each employee worked last week and the hourly rate
+of each employee. Your program should input this information for each employee and should determine
+and display the employee's gross pay.
+
+#include<stdio.h>
+
+int main(){
+
+float hoursNo;
+float hourlyRate;
+float salary;
+
+while(1){
+
+printf("\nEnter # of hours worked <-1 to end>: ");
+scanf("%f", &hoursNo);
+
+if(hoursNo ==-1)
+    break;
+
+printf("\nEnter hourly rate of the worker ($00.00):");
+scanf("%f", &hourlyRate);
+
+if(hoursNo < 40){
+salary= (hourlyRate * hoursNo );
+printf("\nSalary is $ %f", salary);
+}else{
+salary= (hourlyRate * 40 ) + (15 * (hoursNo - 40));
+printf("\nSalary is $ %f", salary);
+}
+}
+return 0;
+}
+
+3.21 (Predecrementing vs. Postdecrementing) 
+Write a program that demonstrates the difference between predecrementingand
+postdecrementing using the decrement operator --.
+
+#include<stdio.h>
+
+int main(){
+
+unsigned int i=1,j,k;
+j=--i;
+i=1;
+k=i--;
+
+printf("i=%i\tj=%i\tk=%i\n",i,j,k);
+
+}
+
+3.22 (Printing Numbers from a Loop) 
+Write a program that utilizes looping to print
+the numbers from 1 to 10 side by side on the same line with three spaces between numbers.
+
+#include<stdio.h>
+
+int main(){
+int i=1;
+
+while(i<=10){
+    printf("%i   ",i);
+    i++;
+}
+
+return 0;
+}
+
+3.23 (Find the Largest Number) 
+The process of finding the largest number (i.e., the maximum of a group of numbers) 
+is used frequently in computer applications. For example, a program that determines 
+the winner of a sales contest would input the number of units sold by each salesperson.
+The salesperson who sells the most units wins the contest. Write a pseudocode program and then a
+program that inputs a series of 10 non-negative numbers and determines and prints the largest of
+the numbers. Hint: Your program should use three variables as follows:
+counter: A counter to count to 10 (i.e., to keep track of how many numbers have
+been input and to determine when all 10 numbers have been processed)
+number: The current number input to the program
+largest: The largest number found so far
+
+
+#include<stdio.h>
+
+int main(){
+
+int i,num,largest=0;
+for(i=0;i<10;i++){
+    printf("\nEnter number: ");
+    scanf("%i", &num);
+if(num>largest)
+    largest=num;
+}
+printf("largest number= %i", largest);
+return 0;
+}
+
+3.24 (Tabular Output)
+Write a program that uses looping to print the following table of values.
+Use the tab escape sequence, \t, in the printfstatement to separate the 
+columns with tabs.
+
+#include<stdio.h>
+
+int main(){
+int N;
+
+printf("N\t10*N\t100*N\t1000*N\n");
+for(N=1;N<=10;N++){
+    printf("%i\t%i\t%i\t%i\n",N,10*N,100*N,1000*N);
+}
+return 0;
+}
+
+3.25 (Tabular Output) Write a program that utilizes looping to produce the following table of
+values.
+
+#include<stdio.h>
+
+int main(){
+int A;
+printf("A\tA+2\tA+4\tA+6\n");
+for(A=3;A<=15;A+=3){
+    printf("%i\t%i\t%i\t%i\n",A,A+2,A+4,A+6);
+}
+return 0;
+}
+
+3.26 (Find the Two Largest Numbers) Using an approach similar to Exercise 3.23, find the two
+largest values of the 10 numbers. [Note: You may input each number only once.]
+
+#include<stdio.h>
+
+int main(){
+int i;
+int num, largest1=0,largest2=0;
+
+for(i=0;i<10;i++){
+    printf("\nEnter number:");
+    scanf("%i", &num);
+    if(num>largest1){
+        largest2=largest1;
+        largest1=num;
+    }else if(num>largest2){
+       largest2=num;
+    }
+}
+printf("\nlargest1=%i\tlargest2=%i", largest1, largest2);
+return 0;
+}
+
+3.27 (Validating User Input) Modify the program in Figure 3.10 to validate its inputs. On any
+input, if the value entered is other than 1 or 2, keep looping until the userenters a correct value.
+
+#include<stdio.h>
+
+int main(){
+
+unsigned int passes=0;
+unsigned int failures=0;
+unsigned int student=1;
+int result;
+
+while(student <=10){
+
+    while(1){
+      printf("%s", "Enter result (1=pass, 2=fail ):");
+      scanf("%d", &result);
+
+      if(result ==1 || result ==2)
+        break;
+    }
+
+    if(result == 1){
+        passes=passes+1;
+    }else if (result == 2){
+        failures=failures+1;
+    }
+    student=student+1;
+}
+
+printf("passed %u\n", passes);
+printf("Failed %u\n", failures);
+
+if(passes > 8){
+    puts("Bonus to instructor!");
+}
+return 0;
+}
+
+3.28 output of the program
+
+1 #include<stdio.h>
+2
+3 intmain( void)
+4 {
+5   unsigned intcount = 1; // initialize count 
+6
+7   while( count <= 10) { // loop 10 times 
+8
+9   // output line of text 
+10 puts( count % 2? "****": "++++++++");
+11 ++count; // increment count 
+12 } // end while 
+13 } // end function main
+
+3.29
+
+1 #include<stdio.h>
+2
+3 intmain( void)
+4 {
+5   unsigned introw = 10; // initialize row 
+6   unsigned intcolumn; // define column 
+7
+8   while( row >= 1) { // loop until row < 1 
+9 column = 1; // set column to 1 as iteration begins 
+10
+11   while( column <= 10) { // loop 10 times 
+12 printf( "%s", row % 2? "<": ">"); // output 
+13 ++column; // increment column 
+14 } // end inner while 
+15
+16 --row; // decrement row 
+17 puts( ""); // begin new output line 
+18 } // end outer while 
+19 } // end function main
+
+3.30 (Dangling Else Problem) 
+Determine the output for each of the following when xis 9and y
+is 11, and when xis 11and yis 9. The compiler ignores the indentation in a C program. Also, the
+compiler always associates an elsewith the previous ifunless told to do otherwise by the placement
+of braces {}. Because, on first glance, you may not be sure which ifan elsematches, this is referred
+to as the “dangling else” problem. We eliminated the indentation from the following code to make
+the problem more challenging. [Hint: Apply indentation conventions you have learned.]
+a) if( x < 10)
+if( y > 10)
+puts( "*****"); 
+else
+puts( "#####");
+puts( "$$$$$");
+b) if( x < 10) {
+if( y > 10)
+puts( "*****"); 
+}
+else{
+puts( "#####");
+puts( "$$$$$");
+}
+
+
+#include<stdio.h>
+
+int main(){
+int x=9,y=11;
+
+if( x < 10) {
+if( y > 10)
+puts( "*****");
+}
+else{
+puts( "#####");
+puts( "$$$$$");
+}
+return 0;
+}
+
+3.31 (Another Dangling Else Problem) Modify the following code to produce the output shown.
+Use proper indentation techniques. You may not make any changes other than inserting braces. The
+compiler ignores the indentation in a program. We eliminated the indentation from the following
+code to make the problem more challenging. [Note:It’s possible that no modification is necessary.]
+if( y == 8)
+if( x == 5)
+puts( "@@@@@");
+else
+puts( "#####");
+puts( "$$$$$");
+puts( "&&&&&"); 
+a) Assuming x = 5and y = 8
+b) Assuming x = 5and y = 8
+c) Assuming x = 5and y = 8
+d) Assuming x = 5and y = 7
+
+#include<stdio.h>
+
+int main(){
+int x=5,y=8;
+
+if( y == 8){
+if( x == 5)
+puts( "@@@@@");
+}else{
+puts( "#####");
+}
+puts( "$$$$$");
+puts( "&&&&&");
+
+return 0;
+}
+
+3.32 (Square of Asterisks) Write a program that reads in the side of a square and then prints that
+square out of asterisks. Your program should work for squares of all side sizes between 1 and 20. For
+example, if your program reads a size of 4, it should print.
+
+#include<stdio.h>
+
+int main(){
+int squareSide;
+int i,j;
+printf("\nEnter the square side: ");
+scanf("%i", &squareSide);
+
+for(i=0;i<squareSide;i++){
+    for(j=0;j<squareSide;j++){
+       printf("*");
+    }
+    printf("\n");
+}
+return 0;
+}
+
+3.33 (Hollow Square of Asterisks) Modify the program you wrote in Exercise 3.32 so that it
+prints a hollow square. 
+
+#include<stdio.h>
+
+int main(){
+    int squareSide;
+    int i,j;
+
+    printf("Enter the side of the square: ");
+    scanf("%i", &squareSide);
+
+    for(i=0;i<squareSide;i++){
+        for(j=0;j<squareSide;j++){
+            if(i==0 || i==squareSide-1 || j==0 || j==squareSide-1)
+                printf("*");
+            else
+                printf(" ");
+        }
+        printf("\n");
+    }
+return 0;
+}
+
+3.34 (Palindrome Tester) A palindrome is a number or a text phrase that reads the same backward as forward. For example, each of the following five-digit integers is a palindrome: 12321,
+55555, 45554 and 11611. Write a program that reads in a five-digit integer and determines whether
+or not it’s a palindrome. [Hint: Use the division and remainder operators to separate the number
+into its individual digits.]
+
+
+#include<stdio.h>
+
+int main(){
+int num, temp, reverse=0;
+
+printf("Enter the number you want to check:");
+scanf("%i", &num);
+
+temp=num;
+
+while(temp!=0){
+    reverse= (reverse * 10) + (temp %10);
+    temp/=10;
+}
+
+if(num == reverse)
+    printf("it's palindrome number");
+else
+    printf("It's NOT a palindrome number");
+return 0;
+}
+
+3.35 (Printing the Decimal Equivalent of a Binary Number) Input an integer (5 digits or fewer)
+containing only 0s and 1s (i.e., a “binary” integer) and print its decimal equivalent. [Hint:Use the
+remainder and division operators to pick off the “binary” number’s digits one at a time from right
+to left. Just as in the decimal number system, in which the rightmost digit has a positional value of
+1, and the next digit left has a positional value of 10, then 100, then 1000, and so on, in the binary
+number system the rightmost digit has a positional value of 1, the next digit left has a positional
+value of 2, then 4, then 8, and so on. Thus the decimal number 234 can be interpreted as 4 * 1 + 3
+* 10 + 2 * 100. The decimal equivalent of binary 1101 is 1 * 1 + 0 * 2 + 1 * 4 + 1 * 8 or 1 + 0 + 4
++ 8 or 13.]
+
+
+3.36 (How Fast is Your Computer?) How can you determine how fast your own computer really
+operates? Write a program with a whileloop that counts from 1 to 1,000,000,000 by 1s. Every time
+the count reaches a multiple of 100,000,000, print that number on the screen. Use your watch to
+time how long each 100 million repetitions of the loop takes.
+
+#include<stdio.h>
+
+int main(){
+int i=1;
+
+while(i<=1000000000){
+    if(i%100000000 == 0)
+    printf("%i\n", i);
+i++;
+}
+
+return 0;
+}
+
+
+3.37 (Detecting Multiples of 10) Write a program that prints 100 asterisks, one at a time. After
+every tenth asterisk, your program should print a newline character. [Hint: Count from 1 to 100.
+Use the remainder operator to recognize eachtime the counter reaches a multiple of 10.]
+
+#include<stdio.h>
+
+int main(){
+int i;
+for(i=1;i<=100;i++){
+    printf("*");
+    if(i%10 == 0)
+      printf("\n");
+}
+return 0;
+}
+
+
+3.38 (Counting 7s) Write a program that reads an integer (5 digits or fewer) and determines and
+prints how many digits in the integer are 7s.
+
+#include<stdio.h>
+
+int main(){
+
+int num, count=0;
+printf("Enter the number(5 digits or fewer):");
+scanf("%i", &num);
+
+while(num !=0){
+    if(num%10 ==7)
+        count++;
+    num/=10;
+}
+printf("\nNumber of 7's in the number is: %i", count);
+return 0;
+}
+
+3.39 (Checkerboard Pattern of Asterisks) Write a program that displays the following checkerboard pattern:
+
+
+#include<stdio.h>
+
+int main(){
+int i,j;
+
+for(i=1;i<=8;i++){
+    for(j=1;j<=8;j++){
+    printf( "%s", "* ");
+    printf( "%s", " ");
+    }
+    puts(""); // outputs a newline
+}
+return 0;
+}
+
+3.40 (Multiples of 2 with an Infinite Loop) Write a program that keeps printing the multiples of
+the integer 2, namely 2, 4, 8, 16, 32, 64, and so on. Your loop should not terminate (i.e., you should
+create an infinite loop). What happens when you run this program? 
+
+#include<stdio.h>
+
+int main(){
+int i=1;
+while(1)
+{
+  i*=2;
+ printf("%d\n",i);
+}
+return 0;
+}
+
+3.41 (Diameter, Circumference and Area of a Cirle) Write a program that reads the radius of a
+circle (as a floatvalue) and computes and prints the diameter, the circumference and the area. Use
+the value 3.14159 for π.
+
+#include<stdio.h>
+
+int main(){
+float radius, diameter, circumference, area;
+
+printf("Enter the radius: ");
+scanf("%f", &radius);
+
+diameter= 2*radius;
+circumference=2*3.14159*radius;
+area= 3.14159*radius*radius;
+printf("\n diameter=%f\tcircumference=%f\tarea=%f\t", diameter, circumference, area);
+return 0;
+}
+
+3.42 What’s wrong with the following statement? Rewrite it to accomplish what the programmer
+was probably trying to do.
+printf( "%d", ++( x + y ) );
+
+#include<stdio.h>
+
+int main(){
+int x=1,y=1;
+printf( "%d", ++( x + y ) );
+//++x + ++y
+return 0;
+}
+
+3.43 (Sides of a Triangle) Write a program that reads three nonzero integer values 
+and determines and prints whether they could represent the sides of a triangle.
+
+
+
+3.44 (Sides of a Right Triangle) Write a program that reads three nonzero integers 
+and determines and prints whether they could be the sides of a right triangle.
+
+
+
+3.45 (Factorial) The factorial of a nonnegative integer nis written n! (pronounced “nfactorial”)
+and is defined as follows:
+n! = n· (n- 1) · (n- 2) · … · 1 (for values of ngreater than or equal to 1)
+and
+n! = 1 (for n= 0).
+For example, 5! = 5 · 4 · 3 · 2 · 1, which is 120. 
+a) Write a program that reads a nonnegative integer and computes and prints its factorial.
+b) Write a program that estimates the value of the mathematical constant eby using the
+formula: 
+c) Write a program that computes the value of ex
+
+//a
+#include<stdio.h>
+
+int main(){
+int num,i;
+int fact=1;
+
+printf("Enter the number: ");
+scanf("%i", &num);
+
+for(i=num;i>=1;i--){
+    fact*=i;
+}
+printf("The factorial of %i is %i", num,fact);
+return 0;
+}
