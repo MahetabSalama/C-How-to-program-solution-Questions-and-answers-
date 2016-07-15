@@ -621,17 +621,24 @@ return 0;
 #include<stdio.h>
 
 int main(){
-int i,j;
+int i,j=1;
 
-for(i=1;i<=8;i++){
-    for(j=1;j<=8;j++){
-    printf( "%s", "* ");
-    printf( "%s", " ");
+while(j<=8){
+    for(i=1;i<=8;i++){
+        printf("*");
     }
-    puts(""); // outputs a newline
+    puts("");
+        j++;
+    if(j%2 == 0)
+    printf(" ");
 }
+
 return 0;
 }
+
+return 0;
+}
+
 
 3.40 (Multiples of 2 with an Infinite Loop) Write a program that keeps printing the multiples of
 the integer 2, namely 2, 4, 8, 16, 32, 64, and so on. Your loop should not terminate (i.e., you should
